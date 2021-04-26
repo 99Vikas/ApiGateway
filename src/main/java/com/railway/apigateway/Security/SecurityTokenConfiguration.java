@@ -1,13 +1,10 @@
 package com.railway.apigateway.Security;
 
-import io.jsonwebtoken.Jwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -30,9 +27,9 @@ public class SecurityTokenConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 //TODO Add search antMatchers
-                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/customer/**").hasAnyRole("ADMIN", "USER")
 //                //TODO divide controllers base on roles in services
-                .antMatchers("/user/admin/**").hasRole("ADMIN")
+                .antMatchers("/customer/admin/**").hasRole("ADMIN")
                 .antMatchers("/train/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/train/admin/**").hasRole("ADMIN")
                 .antMatchers("/booking/**").hasAnyRole("ADMIN", "USER")
