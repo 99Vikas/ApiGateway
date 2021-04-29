@@ -29,9 +29,9 @@ public class SecurityTokenConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 //TODO Add search antMatchers
-                .antMatchers("/customer/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
 //                //TODO divide controllers base on roles in services
-                .antMatchers("/customer/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/admin/**").hasRole("ADMIN")
                 .antMatchers("/train/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/train/admin/**").hasRole("ADMIN")
                 .antMatchers("/booking/**").hasAnyRole("ADMIN", "USER")
